@@ -1,10 +1,9 @@
-import type { Metadata } from "next";
-import "./globals.css";
-
+import type { Metadata } from 'next';
+import './globals.css';
 
 export const metadata: Metadata = {
-  title: "crychic", 
-  description: "要组一辈子的乐队吗？",
+  title: 'crychic',
+  description: '要组一辈子的乐队吗？',
 };
 
 export default function RootLayout({
@@ -14,10 +13,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-      >
-        {children}
-      </body>
+      <body className={`min-h-screen`}>{children}</body>
     </html>
   );
 }
