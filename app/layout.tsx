@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: 'crychic',
@@ -17,7 +19,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={assistant.className}>
-      <body>{children}</body>
+      <body>
+        <Header></Header>
+        {children}
+        <Footer></Footer>
+      </body>
     </html>
   );
 }
