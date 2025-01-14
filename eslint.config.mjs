@@ -20,7 +20,6 @@ const eslintConfig = [
   {
     // 自定义规则配置
     rules: {
-      'prettier/prettier': 'error', // 将prettier的规则违反视为错误
       '@typescript-eslint/no-explicit-any': ['off'], //允许使用any
       '@typescript-eslint/ban-ts-comment': 'off', //允许使用@ts-ignore
       '@typescript-eslint/no-non-null-assertion': 'off', //允许使用非空断言
