@@ -1,7 +1,11 @@
+import Hero from './components/Hero';
+
 export default function Home() {
   return (
-    <main>
-      <div className="min-h-screen bg-taki">this is home</div>
+    <main className="bg-taki pt-7">
+      <div className="min-h-screen">
+        <Hero></Hero>
+      </div>
     </main>
   );
 }
