@@ -114,7 +114,23 @@ export default {
           '950': '#121c13',
         },
       },
+      keyframes: {
+        scroll_line: {
+          '0%': { transform: 'translateY(100%)' },
+          '50%': { transform: 'translateY(0)' },
+          '90%, 100%': { transform: 'translateY(-100%)' },
+        },
+      },
+      animation: {
+        scroll_line: 'scroll_line 3s cubic-bezier(0.87, 0, 0.13, 1) infinite',
+      },
     },
   },
   plugins: [],
+  safelist: [
+    {
+      pattern: /(from|to|bg)-(primary|tomori|anon|rana|soyo|taki|sakiko|wakaba)/,
+      variants: ['hover', 'focus', 'active'],
+    },
+  ],
 } satisfies Config;
