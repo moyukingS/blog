@@ -14,7 +14,6 @@ const eslintConfig = [
   ...compat.extends(
     'next/core-web-vitals', // Next.js的核心Web性能规则
     'next/typescript', // Next.js的TypeScript规则
-    'eslint-config-prettier', // 关闭所有与Prettier冲突的ESLint规则
     'plugin:prettier/recommended' // 启用prettier推荐的规则集
   ),
   {
