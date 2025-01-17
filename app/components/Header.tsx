@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import Switch from '@/components/theme/theme-switch';
+import { ModeToggle } from '@/components/theme/theme-switch';
 import Logo from '@/public/logo.png';
 
 export default function Header() {
@@ -41,7 +41,7 @@ export default function Header() {
           </li>
           <li className="cursor-pointer px-3 text-2xl duration-500 hover:text-anon-400">more</li>
           <li>
-            <Switch></Switch>
+            <ModeToggle></ModeToggle>
           </li>
         </ul>
       </nav>
