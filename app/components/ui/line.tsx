@@ -14,7 +14,7 @@ export default function Line(props: LineParams) {
       style={{ width: `${width}px`, height: `${height}px` }}
     >
       <div
-        className={`absolute left-0 top-0 h-full w-full translate-y-full rounded-full bg-gradient-to-b from-${from} to-${to} animate-scroll_line`}
+        className={`absolute left-0 top-0 h-full w-full translate-y-full rounded-full bg-gradient-to-b from-${from} to-${to} animate-scrollLine`}
         style={{
           animationDelay: `${delay}ms`,
         }}

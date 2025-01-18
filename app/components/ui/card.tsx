@@ -2,27 +2,33 @@ import Img from '@/public/bg.jpg';
 import Image from 'next/image';
 import Tag from '@/components/ui/tag';
 
-export default function Card() {
+interface CardProps {
+  title: string;
+  intro: string;
+  avatar: string;
+  nickName: string;
+  date: string;
+}
+
+export default function Card({ title, intro, avatar, nickName, date }: CardProps) {
   return (
-    <article className="flex flex-col items-start justify-between gap-2 rounded-md bg-anon/30 p-2.5 shadow-2xl">
-      <div className="radio relative aspect-2/1 w-full cursor-pointer overflow-hidden rounded-md">
-        <Image alt="this is img" src={Img} fill></Image>
+    <article className="flex flex-col items-start justify-start gap-2 rounded-md border border-solid bg-tomori/50 p-2.5 shadow-lg duration-300 hover:-translate-y-1 dark:bg-taki/20">
+      {/* eslint-disable-next-line prettier/prettier */}
+      <div className="relative aspect-2/1 w-full cursor-pointer overflow-hidden rounded-md">
+        <Image alt="this is img" src={Img} fill sizes={`100%`} />
       </div>
-      <div className="cursor-pointer">
-        <Tag></Tag>
+      <div className="flex items-center justify-start gap-3">
+        <Tag />
       </div>
-      <h2 className="line-clamp-1 cursor-pointer">title</h2>
+      <h2 className="line-clamp-1 cursor-pointer">{title}</h2>
 
-      <p className="line-clamp-3">
-        introintrointro introintroi ntroint rointrointro introintrointrointrointrointro
-        introintrointrointrointrointro introintrointrointrointrointro introintrointrointrointrointro
-      </p>
+      <p className="line-clamp-3 grow">{intro}</p>
 
-      <div className="flex cursor-pointer items-center justify-start gap-2 text-sm">
-        <div className="h-10 w-10 overflow-hidden rounded-full bg-soyo">avatar</div>
+      <div className="flex cursor-pointer items-center justify-start gap-2 justify-self-end text-sm">
+        <div className="h-10 w-10 overflow-hidden rounded-full bg-soyo">{avatar}</div>
         <div className="flex flex-col items-start justify-center">
-          <div>nickName</div>
-          <time>date</time>
+          <div>{nickName}</div>
+          <time>{date}</time>
         </div>
       </div>
     </article>
