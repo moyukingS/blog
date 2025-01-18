@@ -1,6 +1,6 @@
 export default function Tag() {
   return (
-    <div className='py-0.5 px-3 min-w-24 text-center rounded-full border border-solid border-rana '>
+    <div className="min-w-24 rounded-full border border-solid border-rana px-3 py-0.5 text-center">
       tag
     </div>
   );

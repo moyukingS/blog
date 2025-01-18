@@ -5,7 +5,7 @@ import Tag from '@/components/ui/tag';
 export default function Card() {
   return (
     <article className="flex flex-col items-start justify-between gap-2 rounded-md bg-anon/30 p-2.5 shadow-2xl">
-      <div className="radio aspect-2/1 relative w-full cursor-pointer overflow-hidden rounded-md">
+      <div className="radio relative aspect-2/1 w-full cursor-pointer overflow-hidden rounded-md">
         <Image alt="this is img" src={Img} fill></Image>
       </div>
       <div className="cursor-pointer">
