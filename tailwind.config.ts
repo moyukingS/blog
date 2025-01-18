@@ -8,7 +8,13 @@ export default {
   ],
   darkMode: 'class',
   theme: {
+    container: {
+      center: true,
+    },
     extend: {
+      aspectRatio: {
+        '2/1': '2 / 1',
+      },
       colors: {
         primary: {
           '50': '#f3f7fc',
