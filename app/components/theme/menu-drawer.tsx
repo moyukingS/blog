@@ -20,7 +20,7 @@ const MenuDrawer: React.FC<MenuDrawerProps> = ({ menuList }) => {
   return (
     <Drawer>
       <DrawerTrigger asChild>
-        <Button variant="outline" size="iconSmall">
+        <Button variant="outline" size="icon" className="h-7 w-7 md:h-10 md:w-10">
           <AlignJustify className="duration-400 h-[1.2rem] w-[1.2rem] transition-all dark:text-white" />
         </Button>
       </DrawerTrigger>
