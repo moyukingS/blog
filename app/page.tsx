@@ -82,7 +82,7 @@ export default function Home() {
     <main className="min-h-screen bg-taki-200 dark:bg-sakiko-950">
       <Hero></Hero>
 
-      <div className="container mt-4 grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+      <div className="container mt-4 grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
         {fakeData.map((item, index) => {
           return (
             <Card

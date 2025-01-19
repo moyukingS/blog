@@ -10,6 +10,9 @@ export default {
   theme: {
     container: {
       center: true,
+      padding: {
+        DEFAULT: '1rem',
+      },
     },
     extend: {
       aspectRatio: {

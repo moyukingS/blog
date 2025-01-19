@@ -4,10 +4,11 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { ModeToggle } from '@/components/theme/theme-switch';
 import Logo from '@/public/logo.png';
+import { Sun } from 'lucide-react';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
-
+  const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 1);
@@ -24,7 +25,7 @@ export default function Header() {
       <Link href="/">
         <Image width={60} height={60} src={Logo} alt="logo" priority />
       </Link>
-      <nav className="rounded-full bg-sakiko-100/75 px-8 py-4 shadow-xl brightness-105 backdrop-blur-2xl dark:bg-taki-700/75 dark:text-taki-400">
+      <nav className="hidden rounded-full bg-sakiko-100/75 px-8 py-4 shadow-xl brightness-105 backdrop-blur-2xl dark:bg-taki-700/75 dark:text-taki-400 md:block">
         <ul className="flex items-center justify-evenly gap-6">
           <li className="cursor-pointer px-3 text-2xl duration-500 hover:text-anon-400">
             <Link href={'/'}> home</Link>
@@ -45,6 +46,14 @@ export default function Header() {
           </li>
         </ul>
       </nav>
+      <div className='bg-taki-50 w-10 h-10'>
+      <button
+        className="flex items-center rounded border border-indigo-400 px-3 py-2 text-indigo-200 hover:border-white hover:text-white sm:hidden lg:hidden"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+      </button>
+      </div>
     </header>
   );
 }
