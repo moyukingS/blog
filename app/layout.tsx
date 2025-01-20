@@ -4,6 +4,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Assistant } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme/theme-provider';
+import { ScrollProvider } from '@/components/theme/scroll-provider';
 
 const assistant = Assistant({
   subsets: ['latin'],
@@ -21,16 +22,18 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={assistant.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Header />
-          {children}
-          <Footer />
-        </ThemeProvider>
+        <ScrollProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Header />
+            {children}
+            <Footer />
+          </ThemeProvider>
+        </ScrollProvider>
       </body>
     </html>
   );
