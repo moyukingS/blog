@@ -4,12 +4,18 @@ import * as React from 'react';
 import 'overlayscrollbars/overlayscrollbars.css';
 import { useOverlayScrollbars } from 'overlayscrollbars-react';
 import { useEffect } from 'react';
-export function ScrollProvider({ children, ...props }) {
+import { useTheme } from 'next-themes';
+
+export function ScrollProvider({
+  children,
+  ...props
+}: { children: React.ReactNode } & React.HTMLAttributes<HTMLDivElement>) {
+  const { theme } = useTheme();
   const [initBodyOverlayScrollbars] = useOverlayScrollbars({
     defer: true,
     options: {
       scrollbars: {
-        theme: 'os-theme-light',
+        theme: theme === 'dark' ? 'os-theme-dark' : 'os-theme-light',
         clickScroll: true,
       },
     },
@@ -17,7 +23,7 @@ export function ScrollProvider({ children, ...props }) {
 
   useEffect(() => {
     initBodyOverlayScrollbars(document.body);
-  }, [initBodyOverlayScrollbars]);
+  }, [initBodyOverlayScrollbars, theme]);
 
   return <div {...props}>{children}</div>;
 }

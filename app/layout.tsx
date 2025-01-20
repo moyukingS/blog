@@ -22,18 +22,18 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={assistant.className}>
-        <ScrollProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <ScrollProvider>
             <Header />
             {children}
             <Footer />
-          </ThemeProvider>
-        </ScrollProvider>
+          </ScrollProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
