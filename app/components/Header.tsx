@@ -16,8 +16,8 @@ export default function Header() {
   const pathName = usePathname();
   const menuList: MenuItem[] = [
     { href: '/', label: 'home' },
-    { href: '#', label: 'archives' },
-    { href: '#', label: 'tag' },
+    { href: '/posts', label: 'posts' },
+    { href: '/tag', label: 'tag' },
     { href: '#', label: 'surprise' },
     { href: '/about', label: 'about' },
     { href: '#', label: 'more' },
