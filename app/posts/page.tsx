@@ -1,6 +1,7 @@
-import Welcome from '@/markdown/welcome.mdx';
+import Welcome from '../../markdown/welcome.mdx';
+import { ReactNode } from 'react';
 
-function CustomH1({ children }) {
+function CustomH1({ children }: { children: ReactNode }) {
   return <h1 style={{ color: 'blue', fontSize: '100px' }}>{children}</h1>;
 }
 

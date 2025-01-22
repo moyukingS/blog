@@ -1,4 +1,4 @@
-import Hero from './components/Hero';
+import Hero from '@/components/Hero';
 import Card from '@/components/ui/card';
 import { prisma } from '@/lib/prisma';
 
