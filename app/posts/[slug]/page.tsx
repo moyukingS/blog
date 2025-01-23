@@ -1,4 +1,4 @@
-import { getPost, getAllPosts, Post } from '@/lib/posts';
+import { getPost, getAllPosts } from '@/lib/posts';
 import { Mdx } from '@/components/Mdx';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
@@ -64,6 +64,7 @@ export default async function PostPage({ params }: PostPageProps) {
       </article>
     );
   } catch (error) {
+    console.warn(error);
     notFound();
   }
 }
