@@ -1,13 +1,15 @@
 import fs from 'fs';
 import path from 'path';
-import { serialize } from 'next-mdx-remote/serialize';
-import type { MDXRemoteSerializeResult } from 'next-mdx-remote';
-import rehypePrettyCode from 'rehype-pretty-code';
+// import { serialize } from 'next-mdx-remote/serialize';
+// import type { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import remarkGfm from 'remark-gfm';
+import { compileMDX } from 'next-mdx-remote/rsc';
+import type { CompileMDXResult } from 'next-mdx-remote/rsc';
 
+import rehypePrettyCode from 'rehype-pretty-code';
 const postsDirectory = path.join(process.cwd(), 'markdown');
 
-export interface Post extends MDXRemoteSerializeResult {
+export interface Post extends CompileMDXResult {
   id: string;
   title: string;
   date: string;
@@ -19,18 +21,21 @@ export async function getPost(slug: string) {
   try {
     const fullPath = path.join(postsDirectory, `${slug}.mdx`);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
-    const mdxSource = await serialize(fileContents, {
-      mdxOptions: {
-        remarkPlugins: [remarkGfm],
-        rehypePlugins: [[rehypePrettyCode, { theme: 'github-dark' }]],
+    const { content, frontmatter } = await compileMDX({
+      source: fileContents,
+      options: {
+        parseFrontmatter: true,
+        mdxOptions: {
+          remarkPlugins: [remarkGfm],
+          rehypePlugins: [[rehypePrettyCode, { theme: 'github-dark' }]],
+        },
       },
-      parseFrontmatter: true,
     });
 
     return {
       id: slug,
-      ...mdxSource.frontmatter,
-      ...mdxSource,
+      ...frontmatter,
+      content: content,
     } as Post;
   } catch (error) {
     console.error(`Error loading post ${slug}:`, error);

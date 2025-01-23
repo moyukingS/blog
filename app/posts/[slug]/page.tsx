@@ -1,5 +1,4 @@
 import { getPost, getAllPosts } from '@/lib/posts';
-import { Mdx } from '@/components/Mdx';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 type Props = {
@@ -60,7 +59,7 @@ export default async function PostPage({ params }: Props) {
             )}
           </div>
         </header>
-        <Mdx source={post} />
+        <div className="prose prose-slate max-w-none dark:prose-invert">{post.content}</div>
       </article>
     );
   } catch (error) {
