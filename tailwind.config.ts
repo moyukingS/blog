@@ -184,7 +184,7 @@ export default {
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [require('tailwindcss-animate'), require('@tailwindcss/typography')],
   safelist: [
     {
       pattern: /(from|to|bg)-(primary|tomori|anon|rana|soyo|taki|sakiko|wakaba)/,
