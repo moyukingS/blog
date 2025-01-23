@@ -1,38 +1,36 @@
 import fs from 'fs';
 import path from 'path';
-import matter from 'gray-matter';
 import { serialize } from 'next-mdx-remote/serialize';
+import type { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import rehypePrettyCode from 'rehype-pretty-code';
 import remarkGfm from 'remark-gfm';
 
 const postsDirectory = path.join(process.cwd(), 'markdown');
 
-export interface Post {
+export interface Post extends MDXRemoteSerializeResult {
   id: string;
   title: string;
   date: string;
   description?: string;
   tags?: string[];
-  content: any;
 }
 
 export async function getPost(slug: string) {
   try {
     const fullPath = path.join(postsDirectory, `${slug}.mdx`);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
-
-    const { data, content } = matter(fileContents);
-    const mdxSource = await serialize(content, {
+    const mdxSource = await serialize(fileContents, {
       mdxOptions: {
         remarkPlugins: [remarkGfm],
         rehypePlugins: [[rehypePrettyCode, { theme: 'github-dark' }]],
       },
+      parseFrontmatter: true,
     });
 
     return {
       id: slug,
-      content: mdxSource,
-      ...data,
+      ...mdxSource.frontmatter,
+      ...mdxSource,
     } as Post;
   } catch (error) {
     console.error(`Error loading post ${slug}:`, error);

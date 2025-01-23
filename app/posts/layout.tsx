@@ -1,11 +1,7 @@
 import PostList from '@/components/PostList';
 import { getAllPosts } from '@/lib/posts';
 
-export default async function PostsLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default async function PostsLayout({ children }: { children: React.ReactNode }) {
   const postsData = await getAllPosts();
 
   return (
@@ -14,7 +10,7 @@ export default async function PostsLayout({
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
           {/* 文章列表侧边栏 */}
           <aside className="lg:col-span-3">
-            <div className="sticky top-24 rounded-lg bg-white/50 p-6 shadow-lg backdrop-blur-sm dark:bg-black/30">
+            <div className="rounded-lg bg-white/50 p-6 shadow-lg backdrop-blur-sm dark:bg-black/30">
               <h2 className="mb-6 text-2xl font-bold">文章列表</h2>
               <PostList postsData={postsData} />
             </div>

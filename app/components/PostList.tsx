@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import type { Post } from '@/lib/posts';
+import { Post } from '@/lib/posts';
 
 export default function PostList({ postsData }: { postsData: Post[] }) {
   return (

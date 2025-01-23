@@ -1,16 +1,16 @@
-import { getPost, getAllPosts } from '@/lib/posts';
+import { getPost, getAllPosts, Post } from '@/lib/posts';
 import { Mdx } from '@/components/Mdx';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 
 interface PostPageProps {
-  params: {
-    slug: string;
-  };
+  params: { slug: string };
 }
+
 export async function generateMetadata({ params }: PostPageProps): Promise<Metadata> {
   try {
-    const post = await getPost(params.slug);
+    const { slug } = await params;
+    const post = await getPost(slug);
     if (!post) return { title: '文章未找到' };
 
     return {
@@ -35,9 +35,9 @@ export async function generateStaticParams() {
 
 export default async function PostPage({ params }: PostPageProps) {
   try {
-    const post = await getPost(params.slug);
+    const { slug } = await params;
+    const post = await getPost(slug);
     if (!post) notFound();
-
     return (
       <article className="prose-lg">
         <header className="not-prose mb-8">
@@ -60,9 +60,7 @@ export default async function PostPage({ params }: PostPageProps) {
             )}
           </div>
         </header>
-        <div className="mdx-content">
-          <Mdx source={post.content} />
-        </div>
+        <Mdx source={post} />
       </article>
     );
   } catch (error) {

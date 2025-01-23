@@ -1,20 +1,7 @@
 import Hero from '@/components/Hero';
 import Card from '@/components/ui/card';
-import { prisma } from '@/lib/prisma';
 
 export default async function Home() {
-  const posts = await prisma.post.findMany({
-    where: {
-      published: true,
-    },
-    orderBy: {
-      date: 'desc',
-    },
-    include: {
-      tags: true,
-    },
-  });
-
   return (
     <main className="min-h-screen bg-taki-200 dark:bg-sakiko-950">
       <Hero>
@@ -22,7 +9,7 @@ export default async function Home() {
       </Hero>
 
       <div className="container mt-4 grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
-        {posts.map(post => (
+        {/* {posts.map(post => (
           <Card
             key={post.id}
             date={post.date.toISOString().split('T')[0]}
@@ -31,7 +18,7 @@ export default async function Home() {
             nickName="Admin"
             intro={post.description || ''}
           />
-        ))}
+        ))} */}
       </div>
     </main>
   );
