@@ -1,15 +1,15 @@
 import { getPost, getAllPosts } from '@/lib/posts';
 import { Mdx } from '@/components/Mdx';
 import { notFound } from 'next/navigation';
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
+type Props = {
+  params: Promise<{ slug: string }>;
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
+};
 
-interface PostPageProps {
-  params: { slug: string };
-}
-
-export async function generateMetadata({ params }: PostPageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
-    const { slug } = await params;
+    const slug = (await params).slug;
     const post = await getPost(slug);
     if (!post) return { title: '文章未找到' };
 
@@ -33,9 +33,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function PostPage({ params }: PostPageProps) {
+export default async function PostPage({ params }: Props) {
   try {
-    const { slug } = await params;
+    const slug = (await params).slug;
     const post = await getPost(slug);
     if (!post) notFound();
     return (
