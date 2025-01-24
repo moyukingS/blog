@@ -1,6 +1,8 @@
 import { getPost, getAllPosts } from '@/lib/posts';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import dayjs from 'dayjs';
+
 type Props = {
   params: Promise<{ slug: string }>;
   searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -43,7 +45,7 @@ export default async function PostPage({ params }: Props) {
           <h1 className="mb-2 text-4xl font-bold">{post.title}</h1>
           <div className="flex flex-wrap items-center gap-4 text-gray-500">
             <time dateTime={post.date} className="text-sm">
-              {new Date(post.date).toLocaleDateString('zh-CN')}
+              {dayjs(post.date).format('YYYY-MM-DD')}
             </time>
             {post.tags && (
               <div className="flex flex-wrap gap-2">
@@ -59,6 +61,7 @@ export default async function PostPage({ params }: Props) {
             )}
           </div>
         </header>
+
         <div className="prose prose-slate max-w-none dark:prose-invert">{post.content}</div>
       </article>
     );

@@ -104,7 +104,7 @@ export async function getPostsByTag(tag: string): Promise<Post[]> {
 export async function getAllTags(): Promise<TagWithPosts[]> {
   const posts = await getAllPosts();
   const tagMap = new Map<string, TagWithPosts>();
-  
+
   posts.forEach(post => {
     post.tags?.forEach(tag => {
       if (!tagMap.has(tag)) {
@@ -121,6 +121,7 @@ export async function getAllTags(): Promise<TagWithPosts[]> {
     });
   });
 
-  return Array.from(tagMap.values())
-    .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+  return Array.from(tagMap.values()).sort(
+    (a, b) => b.count - a.count || a.name.localeCompare(b.name)
+  );
 }

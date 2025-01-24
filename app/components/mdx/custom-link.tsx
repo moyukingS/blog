@@ -16,7 +16,7 @@ export default function CustomLink({
 
   if (href?.startsWith('#')) {
     return (
-      <a className='inline' href={href} {...props}>
+      <a href={href} {...props}>
         {children}
       </a>
     );

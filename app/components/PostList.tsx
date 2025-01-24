@@ -14,9 +14,7 @@ export default function PostList({ postsData }: { postsData: Post[] }) {
             {post.description && (
               <p className="text-gray-600 dark:text-gray-400">{post.description}</p>
             )}
-            <time className="text-sm text-gray-500">
-              {new Date(post.date).toLocaleDateString('zh-CN')}
-            </time>
+            <time className="text-sm text-gray-500">{post.date}</time>
           </Link>
         </li>
       ))}
