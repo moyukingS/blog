@@ -1,23 +1,46 @@
 import Link from 'next/link';
 import { Post } from '@/lib/posts';
+import dayjs from 'dayjs';
 
-export default function PostList({ postsData }: { postsData: Post[] }) {
+interface PostListProps {
+  posts: Post[];
+}
+
+export default function PostList({ posts }: PostListProps) {
   return (
-    <ul className="space-y-4">
-      {postsData.map(post => (
-        <li key={post.id}>
-          <Link
-            href={`/posts/${post.id}`}
-            className="block hover:text-sakiko-600 dark:hover:text-taki-400"
-          >
-            <h2 className="text-xl font-semibold">{post.title}</h2>
-            {post.description && (
-              <p className="text-gray-600 dark:text-gray-400">{post.description}</p>
-            )}
-            <time className="text-sm text-gray-500">{post.date}</time>
+    <div className="space-y-6">
+      {posts.map(post => (
+        <article key={post.id} className="group">
+          <Link href={`/posts/${post.id}`}>
+            <div className="space-y-2">
+              <h3 className="text-xl font-semibold text-sakiko-900 transition-colors group-hover:text-sakiko-600 dark:text-taki-100 dark:group-hover:text-taki-300">
+                {post.title}
+              </h3>
+              <time dateTime={post.date}>
+                {dayjs(post.date).format('YYYY年MM月DD日')}
+              </time>
+              <div className="flex items-center gap-4 text-sm text-sakiko-600 dark:text-taki-300">
+
+                {post.tags && (
+                  <div className="flex items-center gap-2">
+                    {post.tags.map(tag => (
+                      <span
+                        key={tag}
+                        className="rounded-full bg-sakiko-100/80 px-2 py-0.5 text-xs text-sakiko-800 dark:bg-taki-800/80 dark:text-taki-200"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+              {post.description && (
+                <p className="text-sakiko-600 dark:text-taki-300">{post.description}</p>
+              )}
+            </div>
           </Link>
-        </li>
+        </article>
       ))}
-    </ul>
+    </div>
   );
 }

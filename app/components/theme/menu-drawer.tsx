@@ -8,7 +8,7 @@ import {
   DrawerDescription,
 } from '@/components/ui/drawer';
 import Link from 'next/link';
-import { MenuItem } from '@/components/Header';
+import { MenuItem } from '@/components/header';
 import { usePathname } from 'next/navigation';
 
 interface MenuDrawerProps {
@@ -26,7 +26,7 @@ const MenuDrawer: React.FC<MenuDrawerProps> = ({ menuList }) => {
       </DrawerTrigger>
 
       <DrawerContent>
-        <div className="mx-auto w-full max-w-sm">
+        <div className="mx-auto pb-6 w-full max-w-sm">
           <div>
             <div className="flex flex-col items-center gap-4">
               <DrawerTitle className="mt-4 text-center">

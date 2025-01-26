@@ -17,7 +17,7 @@ export default function Header() {
   const menuList: MenuItem[] = [
     { href: '/', label: 'home' },
     { href: '/posts', label: 'posts' },
-    { href: '/tag', label: 'tag' },
+    { href: '/tags', label: 'tag' },
     { href: '#', label: 'surprise' },
     { href: '/about', label: 'about' },
     { href: '#', label: 'more' },

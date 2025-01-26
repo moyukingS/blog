@@ -125,3 +125,4 @@ export async function getAllTags(): Promise<TagWithPosts[]> {
     (a, b) => b.count - a.count || a.name.localeCompare(b.name)
   );
 }
+

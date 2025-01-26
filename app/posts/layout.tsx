@@ -1,4 +1,4 @@
-import PostList from '@/components/PostList';
+import PostList from '@/components/post-list';
 import { getAllPosts } from '@/lib/posts';
 
 export default async function PostsLayout({ children }: { children: React.ReactNode }) {
@@ -12,7 +12,7 @@ export default async function PostsLayout({ children }: { children: React.ReactN
           <aside className="lg:col-span-3">
             <div className="rounded-lg bg-white/50 p-6 shadow-lg backdrop-blur-sm dark:bg-black/30">
               <h2 className="mb-6 text-2xl font-bold">文章列表</h2>
-              <PostList postsData={postsData} />
+<PostList posts={postsData} />
             </div>
           </aside>
 
